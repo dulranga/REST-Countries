@@ -1,5 +1,6 @@
 import NavBar from "@components/nav-bar";
 import { AppProps, NextWebVitalsMetric } from "next/app";
+import { ThemeProvider } from "src/providers/ThemeProvider";
 import "../styles/animations.scss";
 import "../styles/globals.scss";
 import "../styles/variables.globals.scss";
@@ -8,16 +9,14 @@ const reportWebVitals = (metric: NextWebVitalsMetric) => {
   console.log(metric);
 };
 
-const NextApp = ({ Component, pageProps }: AppProps) => {
+const CountryFind = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <ThemeProvider>
       <NavBar />
-      <main>
-        <Component {...pageProps} />
-      </main>
-    </>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 };
 
 export { reportWebVitals };
-export default NextApp;
+export default CountryFind;

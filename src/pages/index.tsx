@@ -1,11 +1,13 @@
 import styles from "@styles/index.module.scss";
 import Head from "next/head";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { ChevronDownOutline, SearchOutline } from "react-ionicons";
 import { ICON_SIZE, REGIONS } from "src/constants";
+import { ThemeContext } from "src/providers/ThemeProvider";
 
 interface Props {}
 const Home: FC<Props> = ({}) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <>
       <Head>
@@ -19,7 +21,7 @@ const Home: FC<Props> = ({}) => {
         />
       </Head>
 
-      <div>
+      <main>
         <header className={styles.header}>
           <div className={styles.input}>
             <label htmlFor="search-country">
@@ -47,7 +49,7 @@ const Home: FC<Props> = ({}) => {
             </div>
           </button>
         </header>
-      </div>
+      </main>
     </>
   );
 };

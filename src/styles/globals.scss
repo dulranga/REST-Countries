@@ -5,6 +5,7 @@
   transition: 0.2s ease all;
   font-family: "Nunito Sans", sans-serif;
   scroll-margin: 5rem;
+  color: var(--text);
 }
 
 html {
@@ -14,6 +15,12 @@ html {
 body,
 button {
   font-family: sans-serif;
+}
+body {
+  background: var(--background);
+}
+svg {
+  stroke: var(--text);
 }
 button {
   outline: none;
@@ -41,11 +48,15 @@ textarea {
   outline: none;
   padding: 0.5rem 1rem;
   color: var(--input);
+  background-color: var(--element-bg);
+  &::placeholder {
+    color: var(--input);
+    opacity: 0.75;
+  }
 }
 main {
   max-width: 1500px;
   margin: auto;
-  background: var(--background);
   width: 95%;
   max-width: 1440px;
 }

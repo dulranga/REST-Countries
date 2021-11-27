@@ -7,6 +7,7 @@
       "@graphQL/*": ["src/graphql/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@constants/*": ["/src/constants/*"],
+      "@providers/*": ["/src/providers/*"],
       "@errors/*": ["src/errors/*"],
       "@images/*": ["/public/images/*"]
     },

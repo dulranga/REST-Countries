@@ -11,7 +11,7 @@
 
   .input {
     display: flex;
-    box-shadow: 0 0 20px -10px var(--input);
+    box-shadow: 0 0 10px 1px var(--shadow);
     border-radius: 5px;
     overflow: hidden;
     width: 100%;
@@ -43,7 +43,7 @@
   border: none;
   outline: none;
   background-color: var(--element-bg);
-  box-shadow: 0 0 20px -10px var(--input);
+  box-shadow: 0 0 10px 1px var(--shadow);
   position: relative;
   z-index: 2;
   padding: 0.5rem 1rem;
@@ -58,7 +58,7 @@
     border-radius: 5px;
 
     background-color: var(--element-bg);
-    box-shadow: 0 5px 20px -10px var(--input);
+    box-shadow: 0 0 10px 1px var(--shadow);
 
     top: 100%;
     left: 0;

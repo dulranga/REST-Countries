@@ -1,0 +1,7 @@
+.info {
+  font-size: 0.8rem;
+  strong::after {
+    content: ":";
+    margin-right: 0.5rem;
+  }
+}

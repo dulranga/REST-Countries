@@ -30,7 +30,7 @@ const Home: FC<Props> = ({}) => {
         search.query,
         search.region
       );
-      if (countries) setCountries(countries);
+      if (!!countries?.length) setCountries(countries);
     } catch (error) {}
   };
 

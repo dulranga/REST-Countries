@@ -8,3 +8,4 @@ export const REGIONS = [
   "Oceania",
 ] as const;
 export type Region = typeof REGIONS[number];
+export const LIST_SEPERATOR = ", ";

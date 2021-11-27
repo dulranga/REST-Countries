@@ -11,18 +11,12 @@
       margin-bottom: 1rem;
       cursor: pointer;
     }
-    p {
-      font-size: 0.8rem;
-      strong::after {
-        content: ":";
-        margin-right: 0.5rem;
-      }
-    }
   }
 }
 .image {
   aspect-ratio: 16/10;
   position: relative;
+  display: flex;
   & > div {
     width: 100%;
     height: 100%;

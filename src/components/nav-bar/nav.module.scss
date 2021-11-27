@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 -10px 10px 5px var(--input);
+  margin-bottom: 2rem;
+  background: var(--element-bg);
+}

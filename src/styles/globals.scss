@@ -18,6 +18,13 @@ button {
 }
 body {
   background: var(--background);
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--text);
+  }
 }
 svg {
   stroke: var(--text);

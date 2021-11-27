@@ -1,15 +1,41 @@
+import CountryCard from "@components/country-card";
+import { ISearchCountry } from "@interfaces/SearchCountry";
 import styles from "@styles/index.module.scss";
 import Head from "next/head";
-import { FC, useContext } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { ChevronDownOutline, SearchOutline } from "react-ionicons";
-import { ICON_SIZE, REGIONS } from "src/constants";
-import { ThemeContext } from "src/providers/ThemeProvider";
+import { ICON_SIZE, Region, REGIONS } from "src/constants";
+import { searchCountriesByNameAndRegion } from "src/services/SearchCountries";
 
+interface Search {
+  query: string;
+  region?: Region;
+}
 interface Props {}
 const Home: FC<Props> = ({}) => {
-  const { theme } = useContext(ThemeContext);
+  const [countries, setCountries] = useState<ISearchCountry[]>([]);
+
+  const [search, setSearch] = useState<Search>({ query: "" });
+
+  const setRegion = (region: Search["region"]) => () => {
+    setSearch((prev) => ({ ...prev, region }));
+  };
+  const setQuery = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch((prev) => ({ ...prev, query: e.target.value.trim() }));
+  };
+
+  const searchCountries = async () => {
+    try {
+      const countries = await searchCountriesByNameAndRegion(
+        search.query,
+        search.region
+      );
+      if (countries) setCountries(countries);
+    } catch (error) {}
+  };
+
   return (
-    <>
+    <main>
       <Head>
         <title>
           Frontend Mentor - REST Countries API with color theme switcher
@@ -21,36 +47,61 @@ const Home: FC<Props> = ({}) => {
         />
       </Head>
 
-      <main>
-        <header className={styles.header}>
-          <div className={styles.input}>
-            <label htmlFor="search-country">
-              <SearchOutline width={ICON_SIZE} height={ICON_SIZE} />
-            </label>
-            <input
-              id="search-country"
-              type="text"
-              placeholder="Search for a country.."
-            />
-          </div>
-
-          <button className={styles.drop_down}>
-            <div className={styles.title}>Filter by Region</div>
-            <ChevronDownOutline
-              cssClasses={styles.arrow}
+      <header className={styles.header}>
+        <div className={styles.input}>
+          <label htmlFor="search-country">
+            <SearchOutline
               width={ICON_SIZE}
               height={ICON_SIZE}
+              onClick={searchCountries}
             />
+          </label>
+          <input
+            id="search-country"
+            type="text"
+            onChange={setQuery}
+            placeholder="Search for a country.."
+            onKeyPress={(e) => e.key === "Enter" && searchCountries()}
+          />
+        </div>
 
-            <div className={styles.drop_down_menu}>
-              {REGIONS.map((region, i) => (
-                <div className={styles.option}>{region}</div>
-              ))}
+        <button className={styles.drop_down} onBlur={searchCountries}>
+          <div className={styles.title}>
+            {search.region ?? "Filter by Region"}
+          </div>
+          <ChevronDownOutline
+            cssClasses={styles.arrow}
+            width={ICON_SIZE}
+            height={ICON_SIZE}
+          />
+
+          <div className={styles.drop_down_menu}>
+            {REGIONS.map((region, i) => (
+              <div
+                className={styles.option}
+                key={`region-${i}`}
+                onClick={setRegion(region)}
+              >
+                {region}
+              </div>
+            ))}
+            <div
+              className={[styles.option, styles.remove].join(" ")}
+              key={`region-remove`}
+              onClick={setRegion(undefined)}
+            >
+              Remove Selection
             </div>
-          </button>
-        </header>
-      </main>
-    </>
+          </div>
+        </button>
+      </header>
+
+      <div className={styles.countries_container}>
+        {countries.map((country, i) => (
+          <CountryCard country={country} key={`search-country-${i}`} />
+        ))}
+      </div>
+    </main>
   );
 };
 

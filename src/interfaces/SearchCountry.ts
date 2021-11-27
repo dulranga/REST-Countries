@@ -5,6 +5,7 @@ export interface ISearchCountry {
   alpha3Code: string;
   callingCodes: string[];
   altSpellings: string[];
+  capital: string;
   subregion: string;
   region: string;
   population: number;

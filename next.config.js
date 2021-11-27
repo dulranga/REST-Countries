@@ -18,7 +18,7 @@ module.exports = withGraphQL({
 
   reactStrictMode: true,
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "flagcdn.com", "upload.wikimedia.org"],
     minimumCacheTTL: 60 * 60,
   },
   poweredByHeader: false,

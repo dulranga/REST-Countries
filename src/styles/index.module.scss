@@ -79,6 +79,10 @@
       &:hover {
         background-color: var(--background);
       }
+      &.remove {
+        background-color: tomato;
+        color: #fff;
+      }
     }
   }
 
@@ -90,4 +94,12 @@
     opacity: 1;
     max-height: none;
   }
+}
+.countries_container {
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 2rem;
+  justify-content: space-evenly;
 }

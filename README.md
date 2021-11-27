@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Click Here](https://github.com/dulranga/REST-Countries)
-- Live Site URL: [Click Here](http://multi-theme-calculator.vercel.app/)
+- Live Site URL: [Click Here](https://rest-countries-silk.vercel.app/)
 
 ## My process
 

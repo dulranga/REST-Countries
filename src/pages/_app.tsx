@@ -1,3 +1,4 @@
+import NavBar from "@components/nav-bar";
 import { AppProps, NextWebVitalsMetric } from "next/app";
 import "../styles/animations.scss";
 import "../styles/globals.scss";
@@ -8,7 +9,14 @@ const reportWebVitals = (metric: NextWebVitalsMetric) => {
 };
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <NavBar />
+      <main>
+        <Component {...pageProps} />
+      </main>
+    </>
+  );
 };
 
 export { reportWebVitals };

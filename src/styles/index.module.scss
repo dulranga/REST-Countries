@@ -31,6 +31,14 @@
       font-size: 0.9rem;
     }
   }
+  @media screen and (max-width: 675px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .input {
+      max-width: none;
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .drop_down {

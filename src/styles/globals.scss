@@ -3,10 +3,12 @@
   margin: 0;
   box-sizing: border-box;
   transition: 0.2s ease all;
+  font-family: "Nunito Sans", sans-serif;
   scroll-margin: 5rem;
 }
 
 html {
+  font-size: 20px;
   scroll-behavior: smooth;
 }
 body,
@@ -38,8 +40,12 @@ textarea {
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
+  color: var(--input);
 }
 main {
   max-width: 1500px;
   margin: auto;
+  background: var(--background);
+  width: 95%;
+  max-width: 1440px;
 }

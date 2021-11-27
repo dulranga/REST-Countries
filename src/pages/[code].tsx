@@ -97,7 +97,7 @@ const CountryPage: FC<CountryPageProps> = ({ country, borders }) => {
               <strong>Border Countries:</strong>
               <div>
                 {borders.map((border, i) => (
-                  <div className={styles.border}>
+                  <div className={styles.border} key={`border-${i}`}>
                     <Link href={`/${border.code}`}>
                       <a>{border.name}</a>
                     </Link>

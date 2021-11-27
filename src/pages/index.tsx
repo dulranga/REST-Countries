@@ -1,6 +1,7 @@
 import CountryCard from "@components/country-card";
 import { ISearchCountry } from "@interfaces/SearchCountry";
 import styles from "@styles/index.module.scss";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { ChangeEvent, FC, useState } from "react";
 import { ChevronDownOutline, SearchOutline } from "react-ionicons";
@@ -11,9 +12,12 @@ interface Search {
   query: string;
   region?: Region;
 }
-interface Props {}
-const Home: FC<Props> = ({}) => {
-  const [countries, setCountries] = useState<ISearchCountry[]>([]);
+interface Props {
+  initialCountries: ISearchCountry[];
+}
+const Home: FC<Props> = ({ initialCountries }) => {
+  const [countries, setCountries] =
+    useState<ISearchCountry[]>(initialCountries);
 
   const [search, setSearch] = useState<Search>({ query: "" });
 
@@ -105,4 +109,12 @@ const Home: FC<Props> = ({}) => {
   );
 };
 
+export const getStaticProps: GetStaticProps = async () => {
+  const initialCountries = await searchCountriesByNameAndRegion("us");
+  return {
+    props: {
+      initialCountries,
+    },
+  };
+};
 export default Home;

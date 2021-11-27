@@ -1,0 +1,12 @@
+.theme_toggle {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  font-weight: 800;
+  &:hover {
+    background-color: inherit;
+  }
+  span {
+    margin: 0.5rem;
+  }
+}
